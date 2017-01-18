@@ -9,24 +9,26 @@ import java.util.Random;
 
 public class Game {
 
-    private ArrayList<String> compChoice;
+    private ArrayList<String> compOptions;
 
     private Choice choice;
+    private String player;
 
     public Game(Choice choice){
 
-        compChoice = new ArrayList<String>();
+        compOptions = new ArrayList<String>();
         setupCompChoice();
         this.choice = choice;
+        this.player = player;
 
     }
 
     public int getLength() {
-        return compChoice.size();
+        return compOptions.size();
     }
 
     private String getCompChoiceAtIndex(int index) {
-        return compChoice.get(index);
+        return compOptions.get(index);
     }
 
 
@@ -34,9 +36,13 @@ public class Game {
         Random rand = new Random();
         int listSize = getLength();
         int index = rand.nextInt(listSize);
-        String compChoice = getCompChoiceAtIndex(index);
-        return compChoice;
+        String compOptions = getCompChoiceAtIndex(index);
+        return compOptions;
 
+    }
+
+    public String getPlayer(){
+        return this.player;
     }
 
     public void setupCompChoice(){
@@ -53,15 +59,17 @@ public class Game {
     }
 
     private void addChoice(String choice) {
-        compChoice.add(choice);
+        compOptions.add(choice);
     }
 
-    public String playGame(Choice choice){
+    public String checkResult(){
 
-        switch (choice){
-            case ROCK:
-                if compChoice == "Rock";
-                return "WIN";
+        switch (getRandomCompChoice()){
+            case "Rock":
+                if (getRandomCompChoice() == "Rock") {
+
+                }
+                return "DRAW";
             default:
                 return "IDK";
         }
